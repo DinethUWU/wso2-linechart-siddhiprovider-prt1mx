@@ -1,0 +1,22 @@
+{
+  "name": "line chart with siddhi data provider",
+  "id": "linechart-siddhiprovider",
+  "thumbnailURL": "",
+  "configs": {
+    "pubsub": {
+      "types": ["publisher"]
+    },
+    "providerConfig": {
+      "configs": {
+        "type": "SiddhiStoreDataProvider",
+        "config": {
+          "siddhiApp": "@App:name('ChartProvider') @App:description('Defines the data store and the table for the quering')@store(type = 'rdbms', datasource = 'SAMPLE_DB') define table COUNTRY_DATA(code string, name string,continent string,region string,surfaceArea double,indepYear  int,population int,lifeExpectancy double,gnp double,gnpOld double,localName string,governmentForm string,headOfState string,capital double,code2 string);",
+          "queryData": {
+            "query": "from COUNTRY_DATA select code,name,continent,region,surfaceArea,indepYear,population,lifeExpectancy,gnp,gnpOld,localName,governmentForm,headOfState,capital,code2"
+          },
+          "publishingInterval": 60
+        }
+      }
+    }
+  }
+}
